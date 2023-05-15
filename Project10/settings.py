@@ -106,7 +106,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 if not DEBUG:
-    STATIC_ROOT = os.environ.get('STATIC_ROOT')
+    STATIC_ROOT = ''
 
 STATICFILES_DIRS = [
     BASE_DIR / 'static/'
