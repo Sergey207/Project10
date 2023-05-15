@@ -108,7 +108,7 @@ STATIC_URL = '/static/'
 # if not DEBUG:
 # STATIC_ROOT = BASE_DIR / 'static'
 STATICFILES_DIRS = [
-    str(BASE_DIR / 'static/')
+    str(BASE_DIR / 'static_dev')
 ]
 STATIC_ROOT = 'static'
 print(STATICFILES_DIRS)
