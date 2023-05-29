@@ -23,7 +23,7 @@
 
 <div class="form-check form-check-inline">
     <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">Размах крыла (l): </span>
+        <span class="input-group-text" id="basic-addon1">Размах крыла, мм (l): </span>
         <input type="number" class="form-control" id="num1" step="any">
     </div>
 
@@ -32,16 +32,49 @@
         <input type="number" class="form-control" id="num2" step="any">
     </div>
 
-{#    <div class="input-group mb-3">#}
-{#        <span class="input-group-text" id="basic-addon1"> Аргумент 3</span>#}
-{#        <input type="number" class="form-control" id="num3">#}
-{#    </div>#}
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Крейсеркая скорость полёта, м/с (V): </span>
+        <input type="number" class="form-control" id="num3" step="any">
+    </div>
 
-    <p id="res1" class="lead">Средняя геометрическая хорда (bср): </p>
-    <p id="res2" class="lead">Полная площадь модели (Sм): </p>
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Коэффициент полной аэродинамической силы (Cr): </span>
+        <input type="number" class="form-control" id="num4" step="any">
+    </div>
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Масса модели, кг (m): </span>
+        <input type="number" class="form-control" id="num5" step="any">
+    </div>
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Удельная нагрузка на несущую поверхность, Па (p): </span>
+        <input type="number" class="form-control" id="num6" step="any">
+    </div>
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Сужение крыла (Ƞ): </span>
+        <input type="number" class="form-control" id="num7" step="any">
+    </div>
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Угол стреловидности, ° (X): </span>
+        <input type="number" class="form-control" id="num8" step="any">
+    </div>
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Поправка законцовок крыла, (Δλ): </span>
+        <input type="number" class="form-control" id="num9" step="any">
+    </div>
+
+
+
+    {% for k, v in vars.items %}
+        <p id="res{{ k }}" class="lead">{{ v }}</p>
+    {% endfor %}
+
     <button id="calculate" onclick="calculate()" class="btn btn-primary">Посчитать</button>
 </div>
-
 
 
 <script src="/static_dev/js/calculate.js"></script>
