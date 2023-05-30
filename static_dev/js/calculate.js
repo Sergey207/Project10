@@ -100,14 +100,13 @@ function calculate() {
         let alphaMont0 = alphastr0 + alpha;
         let alphaMontk = alphastrk + alpha;
 
-        let Cxm;
         let ba = (2 / 3) * ((1 + (bk / b0) + Math.pow(bk / b0, 2)) / (1 + (bk / b0))) * b0;
         let za = 0.5 * ((1 + 2 * (bk / b0)) / (3 * (1 + (bk / b0))));
 
 
         // let R = 0.613 * Cr
         let mont_results = [
-            b0, bk, h, alphaMont0, alphaMontk, za * 1000
+            b0, bk, h , alphaMont0, alphaMontk, za * 1000
         ];
 
         let rasch_results = [

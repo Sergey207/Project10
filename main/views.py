@@ -42,7 +42,6 @@ def mainpage(response: WSGIRequest):
 
     context = {
         'inputs': {str(i + 1): name for i, name in enumerate(inputs)},
-        # 'outputs': {str(i + 1): name for i, name in enumerate(outputs)}
         'mont_znach': {str(i + 1): name for i, name in enumerate(mont_znach)},
         'rasch_cnach': {str(i + 1): name for i, name in enumerate(rasch_znach)}
     }
