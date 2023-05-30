@@ -22,58 +22,30 @@
 <br>
 
 <div class="form-check form-check-inline">
-    <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">Размах крыла, мм (l): </span>
-        <input type="number" class="form-control" id="num1" step="any">
+    <div class="container text-start">
+        <div class="row align-items-start">
+            <div class="col">
+                <h1 class="display-6">Входные данные</h1>
+
+                {% for k, v in inputs.items %}
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">{{ v }}</span>
+                        <input type="number" class="form-control" id="num{{ k }}" step="any">
+                    </div>
+                {% endfor %}
+
+                <button id="calculate" onclick="calculate()" class="btn btn-primary">Посчитать</button>
+            </div>
+
+            <div class="col">
+                <h1 class="display-6">Выходные данные</h1>
+
+                {% for k, v in outputs.items %}
+                    <p id="res{{ k }}" class="lead">{{ v }}</p>
+                {% endfor %}
+            </div>
+        </div>
     </div>
-
-    <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">Удлинение крыла, от 3 до 14 (λ): </span>
-        <input type="number" class="form-control" id="num2" step="any">
-    </div>
-
-    <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">Крейсеркая скорость полёта, м/с (V): </span>
-        <input type="number" class="form-control" id="num3" step="any">
-    </div>
-
-    <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">Масса модели, кг (m): </span>
-        <input type="number" class="form-control" id="num5" step="any">
-    </div>
-
-    <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">Удельная нагрузка на несущую поверхность, Па (p): </span>
-        <input type="number" class="form-control" id="num6" step="any">
-    </div>
-
-    <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">Сужение крыла (Ƞ): </span>
-        <input type="number" class="form-control" id="num7" step="any">
-    </div>
-
-    <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">Угол стреловидности, от 0° до 20° (X): </span>
-        <input type="number" class="form-control" id="num8" step="any">
-    </div>
-
-    <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">Поправка законцовок крыла, (Δλ): </span>
-        <input type="number" class="form-control" id="num9" step="any">
-    </div>
-
-    <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">Коэффициент подъёмной силы Oy, (Cy): </span>
-        <input type="number" class="form-control" id="num10" step="any">
-    </div>
-
-
-
-    {% for k, v in vars.items %}
-        <p id="res{{ k }}" class="lead">{{ v }}</p>
-    {% endfor %}
-
-    <button id="calculate" onclick="calculate()" class="btn btn-primary">Посчитать</button>
 </div>
 
 

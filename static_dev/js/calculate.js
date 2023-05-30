@@ -38,20 +38,28 @@ function calculate() {
         "Коэффициент индуктивного сопротивления крыла (Cxi): ",
         "Коэффициент поправки влияния остальных частей модели (Kср): ",
         "Длина концевой шайбы, мм (h): ",
-        "Изменение коэффициентпа индуктивного сопротивления крыла (ΔСxi): "
-
+        "Изменение коэффициента индуктивного сопротивления крыла (ΔСxi): ",
+        "Скос потока, ° (ε): ",
+        "Угол атаки, ° (α): ",
+        "Угол монтажный начальный, ° (αмонт0): ",
+        "Угол монтажный конечный, ° (αмонтк): ",
+        "САХ, мм (ba): ",
+        "Положение САХ, мм (za): ",
+        "Положение центра тяжести по оси x, мм (xцтF): "
     ];
 
     // input
     let l = Number(document.getElementById("num1").value);
     let lambda = Number(document.getElementById("num2").value);
     let V = Number(document.getElementById("num3").value);
-    let m = Number(document.getElementById("num5").value);
-    let p = Number(document.getElementById("num6").value);
-    let n = Number(document.getElementById("num7").value);
-    let X = Number(document.getElementById("num8").value);
-    let dLambda = Number(document.getElementById("num9").value)
-    let Cy = Number(document.getElementById("num10").value)
+    let m = Number(document.getElementById("num4").value);
+    let p = Number(document.getElementById("num5").value);
+    let n = Number(document.getElementById("num6").value);
+    let X = Number(document.getElementById("num7").value);
+    let dLambda = Number(document.getElementById("num8").value)
+    let Cy = Number(document.getElementById("num9").value)
+    let alphastr0 = Number(document.getElementById("num10").value)
+    let alphastrk = Number(document.getElementById("num11").value)
 
     // count
     if (l > 0 && lambda > 0 && V > 0 && m > 0 && p > 0) {
@@ -84,10 +92,22 @@ function calculate() {
 
         let sigm = 0;
         let deltaCxi = ((Cy * Cy) / (pi * lambda)) * (1 + (sigm / 2) + ((sigm * sigm) / 4)) / (1 + (sigm / 2) + ((sigm * sigm) / 10));
+        let eps = Cy / (pi * lambda_ef);
+        let alphaBesc = Math.sqrt(Cy);
+        let alpha = alphaBesc + eps;
+        let alphaMont0 = alphastr0 + alpha;
+        let alphaMontk = alphastrk + alpha;
+
+        let Cxm;
+        let ba = (2 / 3) * ((1 + (bk / b0) + Math.pow(bk / b0, 2)) / (1 + (bk / b0))) * b0;
+        let za = 0.5 * ((1 + 2 * (bk / b0)) / (3 * (1 + (bk / b0))));
+
+
 
         // let R = 0.613 * Cr
         let results = [
-            bcp * 1000, Sm * 10000, Cycp, Re0, Rek, b0, bk, Cxi, Kcp, h, deltaCxi
+            bcp * 1000, Sm * 10000, Cycp, Re0, Rek, b0, bk, Cxi, Kcp, h, deltaCxi, eps,
+            alpha, alphaMont0, alphaMontk, ba * 1000, za * 1000, za * 1000
         ];
 
         for (let i = 0; i < vars.length; i++) {
