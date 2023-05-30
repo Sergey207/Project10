@@ -27,26 +27,28 @@ function getSigm2(X) {
 }
 
 function calculate() {
-    let vars = [
+    let mont_znach = [
+        "Начальная хорда крыла (b0): ",
+        "Конечная хорда крыла (bk): ",
+        "Длина концевой шайбы, мм (h): ",
+        "Угол монтажный начальный, ° (αмонт0): ",
+        "Угол монтажный конечный, ° (αмонтк): ",
+        "Положение центра тяжести по оси x, мм (xцтF): "
+    ]
+    let rasch_znach = [
+        "САХ, мм (ba): ",
         "Средняя геометрическая хорда, мм (bср): ",
         "Полная площадь модели, см2 (Sм): ",
         "Среднее значение коэффициента подъёмной силы (Суср): ",
         "Число Рейнольдса в начале крыла (Rе0): ",
         "Число Рейнольдса в конце крыла (Rек): ",
-        "Начальная хорда крыла (b0): ",
-        "Конечная хорда крыла (bk): ",
         "Коэффициент индуктивного сопротивления крыла (Cxi): ",
         "Коэффициент поправки влияния остальных частей модели (Kср): ",
-        "Длина концевой шайбы, мм (h): ",
         "Изменение коэффициента индуктивного сопротивления крыла (ΔСxi): ",
         "Скос потока, ° (ε): ",
         "Угол атаки, ° (α): ",
-        "Угол монтажный начальный, ° (αмонт0): ",
-        "Угол монтажный конечный, ° (αмонтк): ",
-        "САХ, мм (ba): ",
         "Положение САХ, мм (za): ",
-        "Положение центра тяжести по оси x, мм (xцтF): "
-    ];
+    ]
 
     // input
     let l = Number(document.getElementById("num1").value);
@@ -103,16 +105,26 @@ function calculate() {
         let za = 0.5 * ((1 + 2 * (bk / b0)) / (3 * (1 + (bk / b0))));
 
 
-
         // let R = 0.613 * Cr
-        let results = [
-            bcp * 1000, Sm * 10000, Cycp, Re0, Rek, b0, bk, Cxi, Kcp, h, deltaCxi, eps,
-            alpha, alphaMont0, alphaMontk, ba * 1000, za * 1000, za * 1000
+        let mont_results = [
+            b0, bk, h, alphaMont0, alphaMontk, za * 1000
         ];
 
-        for (let i = 0; i < vars.length; i++) {
-            document.getElementById("res" + (i + 1)).innerHTML = vars[i] + Math.round(results[i] * 1000) / 1000;
+        let rasch_results = [
+            ba * 1000, bcp * 1000, Sm * 10000, Cycp, Re0, Rek, Cxi, Kcp, deltaCxi, eps, alpha, za * 1000
+        ];
+
+        // let results = [
+        //     bcp * 1000, Sm * 10000, Cycp, Re0, Rek, b0, bk, Cxi, Kcp, h, deltaCxi, eps,
+        //     alpha, alphaMont0, alphaMontk, ba * 1000, za * 1000, za * 1000
+        // ];
+
+        for (let i = 0; i < mont_znach.length; i++) {
+            document.getElementById("mont_znach" + (i + 1)).innerHTML = mont_znach[i] + Math.round(mont_results[i] * 1000) / 1000;
+        }
+
+        for (let i = 0; i < rasch_znach.length; i++) {
+            document.getElementById("rasch_znach" + (i + 1)).innerHTML = rasch_znach[i] + Math.round(rasch_results[i] * 1000) / 1000;
         }
     }
-
 }

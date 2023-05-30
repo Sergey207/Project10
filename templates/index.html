@@ -39,9 +39,14 @@
 
             <div class="col">
                 <h1 class="display-6">Выходные данные</h1>
+                <h6>Монтажные значения: </h6>
+                {% for k, v in mont_znach.items %}
+                    <p id="mont_znach{{ k }}" class="lead">{{ v }}</p>
+                {% endfor %}
 
-                {% for k, v in outputs.items %}
-                    <p id="res{{ k }}" class="lead">{{ v }}</p>
+                <h6>Расчётные значения: </h6>
+                {% for k, v in rasch_cnach.items %}
+                    <p id="rasch_znach{{ k }}" class="lead">{{ v }}</p>
                 {% endfor %}
             </div>
         </div>
